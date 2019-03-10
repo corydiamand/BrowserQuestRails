@@ -29,7 +29,8 @@ Mozilla presents an HTML5 mini-MMORPG by Little Workshop http://www.littleworksh
         <meta property="og:description" content="Play Mozilla's BrowserQuest, an HTML5 massively multiplayer game demo powered by WebSockets!">
         <!--<link rel="stylesheet" href="stylesheets/main.css" type="text/css"> -->
         <!--<link rel="stylesheet" href="stylesheets/achievements.css" type="text/css"> -->
-        <script src="js/lib/modernizr.js" type="text/javascript"></script>
+        <!-- <script src="js/lib/modernizr.js" type="text/javascript"></script> -->
+        <%= javascript_include_tag "lib/modernizr" %>
         <!--[if lt IE 9]>
                 <link rel="stylesheet" href="stylesheets/ie.css" type="text/css">
                 <script src="js/lib/css3-mediaqueries.js" type="text/javascript"></script>
@@ -37,7 +38,8 @@ Mozilla presents an HTML5 mini-MMORPG by Little Workshop http://www.littleworksh
                 document.getElementById('parchment').className = ('error');
                 </script>
         <![endif]-->
-        <script src="js/detect.js" type="text/javascript"></script>
+        <!-- <script src="js/detect.js" type="text/javascript"></script> -->
+        <%= javascript_include_tag "detect" %>
         <title>BrowserQuest</title>
   </head>
     <!--[if lt IE 9]>
@@ -79,7 +81,8 @@ Mozilla presents an HTML5 mini-MMORPG by Little Workshop http://www.littleworksh
                          </form>
                          <div class="play button disabled">
                              <div></div>
-                             <img src="/assets/images/common/spinner.gif" alt="">
+                             <%= image_tag "common/spinner.gif" %>
+                             <!-- <img src="/assets/images/common/spinner.gif" alt=""> -->
                          </div>
                          <div class="ribbon">
                             <div class="top"></div>
@@ -101,8 +104,8 @@ Mozilla presents an HTML5 mini-MMORPG by Little Workshop http://www.littleworksh
                          </div>
                          <div class="play button">
                              <div></div>
-                             <%= image_tag "common/spinnger.gif" %>
-                             <img src="images/common/spinner.gif" alt="">
+                             <%= image_tag "common/spinner.gif" %>
+                             <!-- <img src="images/common/spinner.gif" alt=""> -->
                          </div>
                          <div id="create-new">
                             <span><span>or</span> create a new character</span>
@@ -320,8 +323,8 @@ Mozilla presents an HTML5 mini-MMORPG by Little Workshop http://www.littleworksh
                 </div>
             </li>
         </ul>
-
-        <img src="images/common/thingy.png" alt="" class="preload">
+        <%= image_tag "common/spinner.gif" %>
+        <!-- <img src="images/common/thingy.png" alt="" class="preload"> -->
 
         <div id="resize-check"></div>
 
@@ -350,10 +353,14 @@ Mozilla presents an HTML5 mini-MMORPG by Little Workshop http://www.littleworksh
             }
         </script>
 
-        <script src="js/lib/log.js"></script>
+        <!--<script src="js/lib/log.js"></script> -->
+        <%= javascript_include_tag "lib/log" %>
+        <!--
         <script>
                 var require = { waitSeconds: 60 };
         </script>
-        <script data-main="js/home" src="js/lib/require-jquery.js"></script>
+      -->
+        <%#= javascript_include_tag 'lib/require-jquery', :'data-main' => 'assets/javascripts/home.js' %>
+        <!--<script data-main="js/home" src="js/lib/require-jquery.js"></script> -->
   </body>
 </html>
