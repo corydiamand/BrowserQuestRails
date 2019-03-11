@@ -355,12 +355,13 @@ Mozilla presents an HTML5 mini-MMORPG by Little Workshop http://www.littleworksh
 
         <!--<script src="js/lib/log.js"></script> -->
         <%= javascript_include_tag "lib/log" %>
-        <!--
+
         <script>
                 var require = { waitSeconds: 60 };
         </script>
-      -->
-        <%#= javascript_include_tag 'lib/require-jquery', :'data-main' => 'assets/javascripts/home.js' %>
+
+        <%#= javascript_include_tag 'lib/require', :'data-main' => 'assets/javascripts/home.js' %>
+        <%= javascript_include_tag 'lib/require', :'data-main' => "#{javascript_path "home"}"       %>
         <!--<script data-main="js/home" src="js/lib/require-jquery.js"></script> -->
   </body>
 </html>

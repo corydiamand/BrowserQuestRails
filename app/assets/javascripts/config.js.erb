@@ -1,11 +1,12 @@
 
-define(['text!../config/config_build.json'],
+//define(['text!../assets/config/config_build.json'],
+define(["text!..<%= asset_path('assets/client_config/config_build.json') %>"],
 function(build) {
     var config = {
         dev: { host: "localhost", port: 8000, dispatcher: false },
         build: JSON.parse(build)
     };
-    
+
     //>>excludeStart("prodHost", pragmas.prodHost);
     require(['text!../config/config_local.json'], function(local) {
         try {
@@ -15,6 +16,6 @@ function(build) {
         }
     });
     //>>excludeEnd("prodHost");
-    
+
     return config;
 });

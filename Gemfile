@@ -24,6 +24,9 @@ gem 'coffee-rails', '~> 4.2'
 # Use webpacker to handle all the requirejs dependencies
 gem 'webpacker', '~> 4.x'
 
+# For using requirejs on rails. Will have to patch support for rails 5
+gem "requirejs-rails", :git => "git@github.com:corydiamand/requirejs-rails.git"
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -42,6 +45,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'guard-livereload', '~> 2.5', require: false
+  gem 'erubis'
 end
 
 group :development do

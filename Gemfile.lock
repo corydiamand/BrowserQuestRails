@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:corydiamand/requirejs-rails.git
+  revision: d742e7df37150448bbf40ef6fe814dba8aebd921
+  specs:
+    requirejs-rails (1.0.1)
+      railties (>= 3.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -198,12 +205,14 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
+  erubis
   guard-livereload (~> 2.5)
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
   puma (~> 3.0)
   rails (~> 5.0.7, >= 5.0.7.1)
+  requirejs-rails!
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
