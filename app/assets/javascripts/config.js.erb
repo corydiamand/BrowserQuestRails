@@ -1,16 +1,20 @@
 
 //define(['text!../assets/config/config_build.json'],
-define(["text!..<%= asset_path('assets/client_config/config_build.json') %>"],
+//define(["text!.<%=asset_path('client_config/config_build.json')%>"],
+define(
 function(build) {
     var config = {
         dev: { host: "localhost", port: 8000, dispatcher: false },
-        build: JSON.parse(build)
+        //build: JSON.parse(build)
+        build: {host: "localhost", port: 8000}
     };
 
     //>>excludeStart("prodHost", pragmas.prodHost);
-    require(['text!../config/config_local.json'], function(local) {
+    //require(['text!../config/config_local.json'], function(local) {
+    require( function(local){
         try {
-            config.local = JSON.parse(local);
+            //config.local = JSON.parse(local);
+            config.local = {host: "localhost",port: 8000,dispatcher: false}
         } catch(e) {
             // Exception triggered when config_local.json does not exist. Nothing to do here.
         }

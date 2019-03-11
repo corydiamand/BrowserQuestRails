@@ -7,8 +7,9 @@ Rails.application.config.assets.version = '1.0'
 #Rails.application.config.assets.paths << Emoji.images_path
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "fonts")
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "sprites")
+Rails.application.config.assets.paths << Rails.root.join("app", "assets", "maps")
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "client_config")
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w(*.js /lib/*.js)
+Rails.application.config.assets.precompile += %w(*.js /lib/*.js /client_config/*.json)
