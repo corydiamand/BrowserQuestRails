@@ -27,6 +27,8 @@ Mozilla presents an HTML5 mini-MMORPG by Little Workshop http://www.littleworksh
         <meta property="og:image" content="http://browserquest.mozilla.org/images/common/promo-title.jpg">
         <meta property="og:site_name" content="BrowserQuest">
         <meta property="og:description" content="Play Mozilla's BrowserQuest, an HTML5 massively multiplayer game demo powered by WebSockets!">
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
         <!--<link rel="stylesheet" href="stylesheets/main.css" type="text/css"> -->
         <!--<link rel="stylesheet" href="stylesheets/achievements.css" type="text/css"> -->
         <!-- <script src="js/lib/modernizr.js" type="text/javascript"></script> -->
@@ -211,7 +213,7 @@ Mozilla presents an HTML5 mini-MMORPG by Little Workshop http://www.littleworksh
               <div class="parchment-right"></div>
           </section>
       </div>
-    <div id="container">
+    <div id="container" style="display: block;">
         <div id="canvasborder">
             <article id="instructions" class="clickable">
                 <div class="close"></div>
@@ -323,7 +325,7 @@ Mozilla presents an HTML5 mini-MMORPG by Little Workshop http://www.littleworksh
                 </div>
             </li>
         </ul>
-        <%= image_tag "common/spinner.gif" %>
+        <%= image_tag "common/thingy" %>
         <!-- <img src="images/common/thingy.png" alt="" class="preload"> -->
 
         <div id="resize-check"></div>
@@ -360,8 +362,8 @@ Mozilla presents an HTML5 mini-MMORPG by Little Workshop http://www.littleworksh
                 var require = { waitSeconds: 60 };
         </script>
 
-        <%#= javascript_include_tag 'lib/require', :'data-main' => 'assets/javascripts/home.js' %>
-        <%= javascript_include_tag 'lib/require', :'data-main' => "#{javascript_path "home"}"       %>
+        <%= javascript_include_tag 'lib/require', :'data-main' => "#{javascript_path "home"}" %>
+        <%#= javascript_include_tag 'lib/require-jquery', :'data-main' => "#{javascript_path "home"}"       %>
         <!--<script data-main="js/home" src="js/lib/require-jquery.js"></script> -->
   </body>
 </html>
