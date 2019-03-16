@@ -45,16 +45,42 @@ define(['player', 'entityfactory', 'lib/bison'], function(Player, EntityFactory,
         },
 
         connect: function(dispatcherMode) {
+
             var url = "ws://"+ this.host +":"+ this.port +"/cable",
                 self = this;
 
             log.info("Trying to connect to server : "+url);
 
-            if(window.MozWebSocket) {
-                this.connection = new MozWebSocket(url);
-            } else {
-                this.connection = new WebSocket(url);
-            }
+            // if(window.MozWebSocket) {
+            //     this.connection = new MozWebSocket(url);
+            // }
+            // else {
+            //     this.connection = new WebSocket(url);
+            // }
+            this.connection = App.cable.subscriptions.create("GameChannel", {
+                  received: function(data) {
+                    $(this).trigger('received', data);
+                  },
+
+                  sendMessage: function(messageBody) {
+                    this.perform('message', { body: messageBody});
+                  },
+
+                  isopen: function(data) {
+                    this.sendMessage(data)
+                  },
+
+                  initialized() {
+                    //this.update = this.update.bind(this)
+                    //log.info("Connected to server "+self.host+":"+self.port);
+                  },
+
+                  connected: function(){
+                    log.info("Connected to server "+self.host+":"+self.port);
+                  },
+
+            });
+            App.cable.connection.webSocket.onmessage = function(event) { console.log(event); };
 
             if(dispatcherMode) {
                 this.connection.onmessage = function(e) {
@@ -69,11 +95,14 @@ define(['player', 'entityfactory', 'lib/bison'], function(Player, EntityFactory,
                     }
                 };
             } else {
-                this.connection.onopen = function(e) {
+                this.connection.initialized = function(e) {
                     log.info("Connected to server "+self.host+":"+self.port);
                 };
 
-                this.connection.onmessage = function(e) {
+                //this.connection.onmessage = function(e) {
+                this.connection.received = function(e) {
+                    console.log(e);
+                    console.log('ON MESSAGE!');
                     if(e.data === "go") {
                         if(self.connected_callback) {
                             self.connected_callback();
@@ -115,11 +144,14 @@ define(['player', 'entityfactory', 'lib/bison'], function(Player, EntityFactory,
                 } else {
                     data = JSON.stringify(json);
                 }
-                this.connection.send(data);
+                this.connection.sendMessage(json)
+                //this.connection.send(data);
             }
+            this.connection.sendMessage(json)
         },
 
         receiveMessage: function(message) {
+            console.log("received!"+message)
             var data, action;
 
             if(this.isListening) {

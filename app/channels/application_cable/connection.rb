@@ -5,6 +5,8 @@ module ApplicationCable
     def connect
       #self.current_user
       puts "Connected!"
+      self.current_user = 1
+      puts self
     end
 
     # private
