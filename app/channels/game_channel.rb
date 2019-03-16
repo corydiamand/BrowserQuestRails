@@ -14,6 +14,12 @@ class GameChannel < ApplicationCable::Channel
 
   def message(data)
     puts data
+    if Message.type_of(data["body"][0]) == :HELLO
+    ActionCable.server.broadcast "1", {
+      data: [1,5660,'Cory',16,233,230].to_json
+    }
+      #[Types.Messages.WELCOME, self.id, self.name, self.x, self.y, self.hitPoints]
+    end
   end
 
   def appear(data)
